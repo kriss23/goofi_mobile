@@ -7,28 +7,27 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-
-    <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/msf-2.0.21.min.js"></script>
   </head>
-  <body ng-app="starter">
-
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
-      <ion-content>
+  <body ng-app="goofi">
+      <ion-content class="padding" ng-controller="goofiCtrl">
+        <div class="list" ng-hide="ipCorrect">
+          <label class="item item-input">
+            <input type="text" placeholder="TV IP:" ng-model="IP">
+          </label>
+          <button class="button button-block button-positive icon-left ion-gear-a" ng-click="setIP(IP)">
+            SET IP
+          </button><br>
+          <button class="button button-block button-assertive" ng-show="wrongIP" disabled>
+            <b>WRONG IP</b>
+          </button>
+        </div>
+        <div class="appRuns" ng-show="ipCorrect">
+          <a href="{{link}}"><img ng-src="{{image}}" class="image"></a>
+        </div>
       </ion-content>
-    </ion-pane>
   </body>
 </html>
